@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectroHub - Premium Electronics Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-theme">
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header-content">
+            <div class="logo">
+                <h1>⚡ ElectroHub</h1>
+            </div>
+            <nav class="main-nav" id="mainNav">
+                <a href="#" data-section="home" class="nav-link active">Home</a>
+                <a href="#" data-section="products" class="nav-link">Products</a>
+                <a href="#" data-section="about" class="nav-link">About</a>
+                <a href="#" data-section="contact" class="nav-link">Contact</a>
+                <a href="#" data-section="admin" class="nav-link admin-link">Admin</a>
+            </nav>
+            <div class="header-actions">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search electronics..." aria-label="Search products">
+                    <button class="search-btn" aria-label="Search">
+                        <span>🔍</span>
+                    </button>
+                </div>
+                <div class="theme-switcher">
+                    <select id="themeSwitcher" aria-label="Select theme">
+                        <option value="light-theme">☀️ Light</option>
+                        <option value="dark-theme">🌙 Dark</option>
+                        <option value="high-contrast-theme">🔆 High Contrast</option>
+                    </select>
+                </div>
+                <button class="cart-icon" id="cartIcon" aria-label="Shopping cart">
+                    🛒
+                    <span class="cart-count" id="cartCount">0</span>
+                    <span class="cart-total" id="cartTotal">$0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="mainContent">
+        <!-- Hero Section -->
+        <section class="hero-section" id="homeSection">
+            <div class="hero-content">
+                <h2 class="hero-title">Upgrade your tech, effortlessly</h2>
+                <p class="hero-subtitle">Discover our curated collection of premium electronics, from cutting-edge smartphones to powerful laptops</p>
+                <button class="btn btn-primary btn-large" id="shopNowBtn">Shop Now</button>
+            </div>
+            <div class="value-props">
+                <div class="value-prop">
+                    <span class="prop-icon">🚚</span>
+                    <span class="prop-text">Free Shipping over $50</span>
+                </div>
+                <div class="value-prop">
+                    <span class="prop-icon">🔒</span>
+                    <span class="prop-text">Secure Payments</span>
+                </div>
+                <div class="value-prop">
+                    <span class="prop-icon">💬</span>
+                    <span class="prop-text">Expert Support</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products-section" id="productsSection">
+            <div class="container">
+                <h2 class="section-title">Our Products</h2>
+                
+                <!-- Filters and Sorting -->
+                <div class="controls-bar">
+                    <div class="filters">
+                        <h3 class="filter-title">Filter by:</h3>
+                        
+                        <div class="filter-group">
+                            <h4>Category</h4>
+                            <div class="filter-options" id="categoryFilters">
+                                <label class="filter-option">
+                                    <input type="checkbox" value="Smartphones" class="category-filter">
+                                    <span>Smartphones</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" value="Laptops" class="category-filter">
+                                    <span>Laptops</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" value="Audio" class="category-filter">
+                                    <span>Audio</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" value="Wearables" class="category-filter">
+                                    <span>Wearables</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" value="Accessories" class="category-filter">
+                                    <span>Accessories</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <h4>Brand</h4>
+                            <div class="filter-options" id="brandFilters">
+                                <label class="filter-option">
+                                    <input type="checkbox" value="GalaxyTech" class="brand-filter">
+                                    <span>GalaxyTech</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" value="PixelAir" class="brand-filter">
+                                    <span>PixelAir</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" value="ApexTech" class="brand-filter">
+                                    <span>ApexTech</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" value="UltraBook" class="brand-filter">
+                                    <span>UltraBook</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" value="NoiseBeats" class="brand-filter">
+                                    <span>NoiseBeats</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" value="FitTime" class="brand-filter">
+                                    <span>FitTime</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <h4>Price Range</h4>
+                            <div class="price-filter">
+                                <input type="number" id="minPrice" placeholder="Min" min="0" aria-label="Minimum price">
+                                <span>to</span>
+                                <input type="number" id="maxPrice" placeholder="Max" min="0" aria-label="Maximum price">
+                                <button class="btn btn-secondary btn-small" id="applyPriceBtn">Apply</button>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-secondary" id="clearFiltersBtn">Clear All Filters</button>
+                    </div>
+
+                    <div class="sorting-and-products">
+                        <div class="sorting-bar">
+                            <div class="active-filters" id="activeFilters"></div>
+                            <div class="sort-control">
+                                <label for="sortSelect">Sort by:</label>
+                                <select id="sortSelect" aria-label="Sort products">
+                                    <option value="popularity">Popularity</option>
+                                    <option value="price-low">Price: Low to High</option>
+                                    <option value="price-high">Price: High to Low</option>
+                                    <option value="rating">Rating</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Products Grid -->
+                        <div class="products-grid" id="productsGrid">
+                            <!-- Products will be dynamically inserted here -->
+                        </div>
+
+                        <!-- Empty State -->
+                        <div class="empty-state" id="emptyState" style="display: none;">
+                            <span class="empty-icon">📦</span>
+                            <h3>No products found</h3>
+                            <p>Try adjusting your filters or search terms</p>
+                            <button class="btn btn-primary" id="clearFiltersBtn2">Clear Filters</button>
+                        </div>
+
+                        <!-- Load More Button -->
+                        <div class="load-more-container" id="loadMoreContainer" style="display: none;">
+                            <button class="btn btn-secondary" id="loadMoreBtn">Load More Products</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="content-section" id="aboutSection" style="display: none;">
+            <div class="container">
+                <h2 class="section-title">About ElectroHub</h2>
+                <div class="content-text">
+                    <p>Welcome to ElectroHub, your premier destination for cutting-edge electronics. We curate the finest selection of smartphones, laptops, audio equipment, wearables, and accessories from leading brands around the world.</p>
+                    <p>Our mission is to make technology accessible and enjoyable for everyone. With expert support, secure payments, and fast shipping, we're committed to delivering an exceptional shopping experience.</p>
+                    <p>Founded in 2020, we've served over 100,000 satisfied customers and continue to grow our collection with the latest innovations in consumer electronics.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="content-section" id="contactSection" style="display: none;">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="content-text">
+                    <p><strong>Email:</strong> support@electrohub.com</p>
+                    <p><strong>Phone:</strong> 1-800-ELECTRO</p>
+                    <p><strong>Hours:</strong> Monday - Friday, 9AM - 6PM EST</p>
+                    <p><strong>Address:</strong> 123 Tech Street, Silicon Valley, CA 94000</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Section -->
+        <section class="admin-section" id="adminSection" style="display: none;">
+            <div class="admin-layout">
+                <aside class="admin-sidebar">
+                    <h3>Admin Panel</h3>
+                    <nav class="admin-nav">
+                        <a href="#" data-admin-view="dashboard" class="admin-nav-link active">📊 Dashboard</a>
+                        <a href="#" data-admin-view="products" class="admin-nav-link">📦 Products</a>
+                        <a href="#" data-admin-view="orders" class="admin-nav-link">🛍️ Orders</a>
+                        <a href="#" data-admin-view="settings" class="admin-nav-link">⚙️ Settings</a>
+                    </nav>
+                </aside>
+
+                <div class="admin-content">
+                    <!-- Dashboard View -->
+                    <div class="admin-view" id="adminDashboard">
+                        <h2>Dashboard</h2>
+                        <div class="dashboard-stats">
+                            <div class="stat-card">
+                                <h3>Total Products</h3>
+                                <p class="stat-value" id="totalProductsStat">0</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Total Categories</h3>
+                                <p class="stat-value">5</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Low Stock Items</h3>
+                                <p class="stat-value" id="lowStockStat">0</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Products View -->
+                    <div class="admin-view" id="adminProducts" style="display: none;">
+                        <div class="admin-header">
+                            <h2>Product Management</h2>
+                            <button class="btn btn-primary" id="addProductBtn">+ Add New Product</button>
+                        </div>
+
+                        <div class="admin-products-list" id="adminProductsList">
+                            <!-- Admin products will be dynamically inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- Orders View (Placeholder) -->
+                    <div class="admin-view" id="adminOrders" style="display: none;">
+                        <h2>Orders</h2>
+                        <p class="placeholder-text">Orders management coming soon...</p>
+                    </div>
+
+                    <!-- Settings View (Placeholder) -->
+                    <div class="admin-view" id="adminSettings" style="display: none;">
+                        <h2>Settings</h2>
+                        <p class="placeholder-text">Settings panel coming soon...</p>
+                    </div>
+
+                    <!-- Product Form -->
+                    <div class="admin-view" id="adminProductForm" style="display: none;">
+                        <div class="admin-header">
+                            <h2 id="productFormTitle">Add New Product</h2>
+                            <button class="btn btn-secondary" id="cancelProductFormBtn">Cancel</button>
+                        </div>
+
+                        <form class="product-form" id="productForm">
+                            <input type="hidden" id="productId">
+                            
+                            <div class="form-group">
+                                <label for="productName">Product Name *</label>
+                                <input type="text" id="productName" required>
+                                <span class="error-message" id="productNameError"></span>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="productCategory">Category *</label>
+                                    <select id="productCategory" required>
+                                        <option value="">Select category</option>
+                                        <option value="Smartphones">Smartphones</option>
+                                        <option value="Laptops">Laptops</option>
+                                        <option value="Audio">Audio</option>
+                                        <option value="Wearables">Wearables</option>
+                                        <option value="Accessories">Accessories</option>
+                                    </select>
+                                    <span class="error-message" id="productCategoryError"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="productBrand">Brand *</label>
+                                    <input type="text" id="productBrand" required>
+                                    <span class="error-message" id="productBrandError"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="productPrice">Price ($) *</label>
+                                    <input type="number" id="productPrice" step="0.01" min="0" required>
+                                    <span class="error-message" id="productPriceError"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="productStock">Stock Quantity *</label>
+                                    <input type="number" id="productStock" min="0" required>
+                                    <span class="error-message" id="productStockError"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="productRating">Rating (0-5)</label>
+                                    <input type="number" id="productRating" step="0.1" min="0" max="5" value="0">
+                                    <span class="error-message" id="productRatingError"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="productShortDesc">Short Description</label>
+                                <input type="text" id="productShortDesc" placeholder="One-line key feature">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="productDescription">Detailed Description</label>
+                                <textarea id="productDescription" rows="4"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="productImage">Image URL *</label>
+                                <input type="url" id="productImage" placeholder="https://example.com/image.jpg" required>
+                                <span class="error-message" id="productImageError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Technical Specifications</label>
+                                <div class="specs-inputs" id="specsInputs">
+                                    <div class="spec-row">
+                                        <input type="text" placeholder="Spec name (e.g., Display)" class="spec-key">
+                                        <input type="text" placeholder="Spec value (e.g., 6.5 inch AMOLED)" class="spec-value">
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-secondary btn-small" id="addSpecBtn">+ Add Spec</button>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Save Product</button>
+                                <button type="button" class="btn btn-secondary" id="cancelProductFormBtn2">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-column">
+                <h3>ElectroHub</h3>
+                <p>Your trusted source for premium electronics since 2020</p>
+            </div>
+            <div class="footer-column">
+                <h4>Customer Support</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Warranty</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="YouTube">📹</a>
+                </div>
+                <div class="newsletter">
+                    <h4>Newsletter</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" aria-label="Email for newsletter">
+                        <button type="submit" class="btn btn-primary btn-small">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ElectroHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Product Detail Modal -->
+    <div class="modal" id="productModal" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Product details will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-drawer-overlay" id="cartDrawerOverlay"></div>
+        <div class="cart-drawer-content">
+            <div class="cart-drawer-header">
+                <h2>Shopping Cart</h2>
+                <button class="cart-drawer-close" id="cartDrawerClose" aria-label="Close cart">&times;</button>
+            </div>
+            <div class="cart-drawer-body" id="cartDrawerBody">
+                <!-- Cart items will be dynamically inserted here -->
+            </div>
+            <div class="cart-drawer-footer">
+                <div class="cart-summary">
+                    <div class="cart-summary-row">
+                        <span>Subtotal:</span>
+                        <span id="cartSubtotal">$0.00</span>
+                    </div>
+                    <div class="cart-summary-row">
+                        <span>Est. Tax:</span>
+                        <span id="cartTax">$0.00</span>
+                    </div>
+                    <div class="cart-summary-row cart-summary-total">
+                        <span>Total:</span>
+                        <span id="cartGrandTotal">$0.00</span>
+                    </div>
+                </div>
+                <div class="cart-actions">
+                    <button class="btn btn-secondary btn-block" id="continueShoppingBtn">Continue Shopping</button>
+                    <button class="btn btn-primary btn-block" id="checkoutBtn">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast" role="alert" aria-live="polite">
+        <span id="toastMessage"></span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
